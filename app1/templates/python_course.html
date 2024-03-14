@@ -25,7 +25,7 @@
                     {% if current_user.profile_image %}
                     <img id="profile-image" src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}" class="h-24 w-24 rounded-full" alt="{{ current_user.username }}'s Profile Image"/>
                     {% else %}
-                    <img id="profile-image" src="{{ url_for('static', filename='profile_pics/default.png') }}" class="h-16 w-16 rounded-full" alt="Default Profile Image">
+                    <img id="profile-image" src="{{ url_for('static', filename='profile_pics/profile.png') }}" class="h-16 w-16 rounded-full" alt="Default Profile Image">
                     {% endif %}
                 </div>
                 <button id="edit-profile-btn" class="ml-20 border-2 flex inline text-white rounded h-8 w-16">Update</button>
