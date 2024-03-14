@@ -1,12 +1,12 @@
 from flask import flash, session, redirect, render_template, Blueprint, current_app,send_from_directory,Response
 import os
-from app1.oper.oper import get_user_course
 from flask_wtf.csrf import generate_csrf
 from flask_login import login_required,current_user
 
 course_bp = Blueprint("course", __name__)
 
 @course_bp.route("/python_course", methods=["GET", "POST"])
+@login_required
 def python_course():
     csrf_token = generate_csrf()
     if 'username' not in session:
