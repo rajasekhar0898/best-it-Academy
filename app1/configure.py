@@ -1,6 +1,6 @@
 class Config:
     SECRET_KEY = 'secret-key'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://avnadmin:AVNS_dro4YtU_Jx8pbFN0OOc@mysql-class-rajasekharvadlamudi57-d7cd.a.aivencloud.com:12873/defaultdb'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     UPLOAD_FOLDERS = {
