@@ -4,12 +4,19 @@ from app1.extensions.db import db
 from app1.configure import Config
 from app1.extensions.login_manager import login_manager
 from app1.routes import main, student, faculty, stu_course, uploads
-
+import os
 
 def load_config(app):
-    app.config['SECRET_KEY'] = 'secret'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://avnadmin:AVNS_dro4YtU_Jx8pbFN0OOc@mysql-class-rajasekharvadlamudi57-d7cd.a.aivencloud.com:12873/defaultdb'
-    
+    # Load secret key from environment variable
+    secret_key = os.environ.get('SECRET_KEY')
+    print("SECRET_KEY:", secret_key)
+
+    # Load database URI from environment variable
+    database_uri = os.environ.get('DATABASE_URI')
+    print("DATABASE_URI:", database_uri)
+
+    app.config['SECRET_KEY'] = secret_key
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
 
 def create_app():
     server = Flask(__name__)

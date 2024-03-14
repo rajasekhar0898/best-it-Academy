@@ -1,4 +1,9 @@
-class Config: 
+class Config:
+    
+    """SECRET_KEY = 'secret'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://avnadmin:AVNS_dro4YtU_Jx8pbFN0OOc@mysql-class-rajasekharvadlamudi57-d7cd.a.aivencloud.com:12873/defaultdb'"""
+    
+    
     UPLOAD_FOLDERS = {
         'python': {
             'notes': 'upload_python_notes',
