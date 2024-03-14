@@ -64,9 +64,8 @@ def login():
         else:
             flash("Invalid credentials. Please try again.", "error")
     return render_template("student_login.html", form=form,csrf_token =csrf_token )
-
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg'}
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg', 'gif'}
 
 @student_bp.route('/upload_profile_image', methods=['POST'])
 @login_required
@@ -79,17 +78,15 @@ def upload_profile_image():
         if file.filename == '':
             return jsonify({'success': False, 'message': 'No selected file'}), 400
         
-        if file:
+        if file and allowed_file(file.filename):
             filename = secure_filename(f"{current_user.id}.png")
             file_path = os.path.join(current_app.root_path, 'static', 'profile_pics', filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            with open(file_path, 'wb') as f:
-                f.write(file.read())
+            file.save(file_path)  # Save the file securely
             current_user.profile_image = filename
             db.session.commit()
             
             return jsonify({'success': True, 'message': 'File uploaded successfully'}), 200
         else:
-            return jsonify({'success': False, 'message': 'Failed to upload profile image'}), 500
+            return jsonify({'success': False, 'message': 'Invalid file type. Allowed types are PNG, JPG, JPEG, and GIF.'}), 400
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)}), 500

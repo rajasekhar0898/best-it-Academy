@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect, request, flash
-from flask_login import login_required
+from flask_login import login_required,current_user
 
 main_bp = Blueprint("main", __name__)
 
@@ -19,7 +19,7 @@ def main():
             return redirect('/student_registration') 
     
     user_course = session.get('course')
-    return render_template("main.html", user_course=user_course)
+    return render_template("main.html", user_course=user_course, current_user=current_user)
 
 @main_bp.route('/pics', methods=["GET", "POST"])
 def pics():

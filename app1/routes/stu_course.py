@@ -2,7 +2,7 @@ from flask import flash, session, redirect, render_template, Blueprint, current_
 import os
 from app1.oper.oper import get_user_course
 from flask_wtf.csrf import generate_csrf
-from flask_login import login_required
+from flask_login import login_required,current_user
 
 course_bp = Blueprint("course", __name__)
 
@@ -32,7 +32,7 @@ def python_course():
     
     return render_template("python_course.html", username=username, course=course, 
                            file_notes=file_notes, file_recordings=file_recordings, 
-                           file_assignments=file_assignments, file_assessments=file_assessments, csrf_token=csrf_token)
+                           file_assignments=file_assignments, file_assessments=file_assessments, csrf_token=csrf_token,currrent_user=current_user)
 
 @course_bp.route("/java_course", methods=["GET", "POST"])
 def java_course():
