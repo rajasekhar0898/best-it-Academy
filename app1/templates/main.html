@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-black fixed text-white font-sans bg-cover bg-no-repeat" style="background-image:url('static/images/pexels-fox-1595385.jpg')">
+<body class="bg-fixed text-white font-sans h-screen bg-cover bg-no-repeat" style="background-image:url('static/images/clint-patterson-dYEuFB8KQJk-unsplash.jpg')">
     <div class="flex justify-between items-center mx-4 my-8">
         <form method="post">
             <div class="left-box bg-transparent rounded-lg shadow-md p-6">
@@ -23,10 +23,10 @@
                     </ul> 
                 </div>
                 {% if user_course %}
-                <h2 class="text-4xl mb-4 text-green-800">Welcome to {{ user_course.capitalize() }} Course</h2>
-                <a href="/{{user_course}}_course" class="text-2xl bg-green-600 rounded-md p-1 m-2">tap here to go to dashboard</a>
+                <h2 class="text-4xl mb-4  text-white">Welcome to {{ user_course.capitalize() }} Course</h2>
+                <a href="/{{user_course}}_course" class="bg-rose-600 text-2xl  rounded-3xl p-1 m-2">Tap here to go to dashboard</a>
                 {% if user_course.lower() == "python" %}
-                <ol class="mt-4 text-rose-800 list-decimal font-semibold">
+                <ol class="mt-4 list-decimal font-semibold text-white">
                     <li>Python is a versatile, high-level programming language known for its simplicity, readability, and flexibility.</li>
                     <li>It offers a wide range of features and capabilities that make it suitable for various applications, from web development and data analysis to artificial intelligence and scientific computing.</li>
                     <li>Python's elegant syntax and dynamic typing make it easy to learn and use, especially for beginners, while its extensive standard library and active community support provide developers with powerful tools and resources to tackle complex problems efficiently.</li>
